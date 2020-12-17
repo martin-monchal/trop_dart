@@ -8,6 +8,8 @@ class AppColors {
   static const Color _primary = Color(0xFFC48A10);
   static const Color _white = Color(0xFFFFFFFF);
   static const Color _grey = Color(0xFFCCCCCC);
+  static const Color _lightGrey = Color(0xFFEDEDD6);
+  static const Color _yellow = Color(0xFFE2C916);
 
   /// END Theme colors
 
@@ -16,4 +18,8 @@ class AppColors {
   static Color get white => _white;
 
   static Color get shadow => _grey.withOpacity(0.5);
+
+  static Color get textfieldColor => _lightGrey;
+
+  static Color get buttonColor => _yellow;
 }
