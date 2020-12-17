@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:trop_dart/ui/screens/auth/login_screen.dart';
+import 'package:trop_dart/ui/screens/auth/login/login_screen.dart';
+import 'package:trop_dart/ui/screens/auth/register/register_screen.dart';
 import 'package:trop_dart/ui/utils/routes.dart';
 import 'package:trop_dart/utils/platform_utils.dart';
 
 class AppRoutes {
   static const String routeHome = '/';
   static const String routeLogin = '/login';
+  static const String routeRegister = '/register';
 
   const AppRoutes._();
 
@@ -19,6 +21,10 @@ class AppRoutes {
     switch (routeName) {
       case routeLogin:
         builder = (BuildContext context) => LoginScreen();
+        animation = _PageAnimation.horizontal;
+        break;
+      case routeRegister:
+        builder = (BuildContext context) => RegisterScreen();
         animation = _PageAnimation.horizontal;
         break;
     }

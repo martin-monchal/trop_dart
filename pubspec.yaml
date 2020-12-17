@@ -17,6 +17,15 @@ dependencies:
   # Device specific
   device_info: ^0.4.2+9
 
+  # Architecture
+  get_it: ^5.0.3
+
+  # Storage
+  shared_preferences: ^0.5.12+4
+
+  # UI
+  overlay_support: ^1.0.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
