@@ -10,6 +10,7 @@ class AppColors {
   static const Color _grey = Color(0xFFCCCCCC);
   static const Color _lightGrey = Color(0xFFEDEDD6);
   static const Color _yellow = Color(0xFFE2C916);
+  static const Color _red = Color(0xFFD31717);
 
   /// END Theme colors
 
@@ -22,4 +23,6 @@ class AppColors {
   static Color get textfieldColor => _lightGrey;
 
   static Color get buttonColor => _yellow;
+
+  static Color get errorColor => _red;
 }

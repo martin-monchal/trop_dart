@@ -2,22 +2,27 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trop_dart/ui/resources/app_colors.dart';
 
-class LoginTextfield extends StatelessWidget {
+class CustomTextfield extends StatelessWidget {
   final TextEditingController controller;
+  final String hintText;
+  final TextInputType inputType;
+  final bool hidePassword;
 
-  LoginTextfield(this.controller);
+  CustomTextfield(
+      {this.controller, this.hintText, this.inputType, this.hidePassword});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      obscureText: hidePassword ?? false,
       controller: controller,
       textInputAction: TextInputAction.done,
-      keyboardType: TextInputType.name,
+      keyboardType: inputType ?? TextInputType.text,
       cursorColor: Theme.of(context).primaryColor,
       decoration: InputDecoration(
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 10.0, vertical: 14.0),
-        hintText: 'Username',
+        hintText: hintText,
         filled: true,
         fillColor: AppColors.textfieldColor,
         border: OutlineInputBorder(
