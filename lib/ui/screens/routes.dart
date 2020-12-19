@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trop_dart/ui/app.dart';
 import 'package:trop_dart/ui/screens/auth/login/login_screen.dart';
 import 'package:trop_dart/ui/screens/auth/register/register_screen.dart';
 import 'package:trop_dart/ui/utils/routes.dart';
@@ -9,6 +10,7 @@ class AppRoutes {
   static const String routeHome = '/';
   static const String routeLogin = '/login';
   static const String routeRegister = '/register';
+  static const String routeApp = '/app';
 
   const AppRoutes._();
 
@@ -25,6 +27,10 @@ class AppRoutes {
         break;
       case routeRegister:
         builder = (BuildContext context) => RegisterScreen();
+        animation = _PageAnimation.horizontal;
+        break;
+      case routeApp:
+        builder = (BuildContext context) => App();
         animation = _PageAnimation.horizontal;
         break;
     }

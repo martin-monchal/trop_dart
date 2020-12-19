@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:trop_dart/app/app_services.dart';
 import 'package:trop_dart/ui/resources/app_colors.dart';
+import 'package:trop_dart/ui/screens/routes.dart';
 import 'package:trop_dart/ui/screens/shared/components/login_confirm_button.dart';
 import 'package:trop_dart/ui/screens/shared/components/textfield.dart';
 
@@ -97,10 +98,12 @@ class _RegisterBodyState extends State<RegisterBody> {
                     background: AppColors.errorColor,
                     duration: Duration(milliseconds: 1500),
                   );
-                }
+                } else {
+                  await ApplicationServices.sharedPreferences.register(
+                      _userNameController.text, _passwordController.text);
 
-                await ApplicationServices.sharedPreferences.register(
-                    _userNameController.text, _passwordController.text);
+                  Navigator.of(context).pushNamed(AppRoutes.routeApp);
+                }
               },
             ),
           ],

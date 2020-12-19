@@ -94,11 +94,7 @@ class _LoginContainerState extends State<LoginContainer> {
                   duration: Duration(milliseconds: 1500),
                 );
               } else {
-                showSimpleNotification(
-                  Text('Well done'),
-                  background: Colors.green,
-                  duration: Duration(milliseconds: 1500),
-                );
+                Navigator.of(context).pushNamed(AppRoutes.routeApp);
               }
             },
           ),
