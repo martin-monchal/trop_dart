@@ -19,6 +19,7 @@ dependencies:
 
   # Architecture
   get_it: ^5.0.3
+  provider: ^4.3.2+3
 
   # Storage
   shared_preferences: ^0.5.12+4
@@ -37,3 +38,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - res/images/

@@ -12,7 +12,6 @@ class App extends StatefulWidget {
 class AppState extends State<App> {
   static int currentTab = 0;
 
-  // list tabs here
   final List<TabItem> tabs = [
     TabItem(
       tabName: 'Home',
@@ -59,11 +58,10 @@ class AppState extends State<App> {
         return isFirstRouteInCurrentTab;
       },
       child: Scaffold(
-        body: SafeArea(
-            child: IndexedStack(
+        body: IndexedStack(
           index: currentTab,
           children: tabs.map((TabItem tab) => tab.page).toList(),
-        )),
+        ),
         bottomNavigationBar: BottomNavigation(
           onSelectTab: _selectTab,
           tabs: tabs,

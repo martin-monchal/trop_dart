@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:provider/provider.dart';
 import 'package:trop_dart/app/app_services.dart';
 import 'package:trop_dart/data/beer/beer_interface.dart';
 import 'package:trop_dart/data/beer/mobile/beer_mobile.dart';
@@ -9,6 +10,7 @@ import 'package:trop_dart/data/storage/hive/storage_hive.dart';
 import 'package:trop_dart/data/storage/storage.dart';
 import 'package:trop_dart/ui/resources/app_colors.dart';
 import 'package:trop_dart/ui/screens/routes.dart';
+import 'package:trop_dart/ui/screens/shared/model/profile_user.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,13 +38,16 @@ class _AppServices implements ApplicationServicesProvider {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return OverlaySupport(
-      child: MaterialApp(
-        theme: ThemeData(
-          primaryColor: AppColors.primary,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
+    return Provider(
+      create: (_) => ProfileUser(),
+      child: OverlaySupport(
+        child: MaterialApp(
+          theme: ThemeData(
+            primaryColor: AppColors.primary,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          onGenerateRoute: AppRoutes.getRoutes,
         ),
-        onGenerateRoute: AppRoutes.getRoutes,
       ),
     );
   }

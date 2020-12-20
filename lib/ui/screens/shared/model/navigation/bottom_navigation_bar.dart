@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trop_dart/ui/app.dart';
+import 'package:trop_dart/ui/resources/app_colors.dart';
 import 'package:trop_dart/ui/screens/shared/model/navigation/tab_item.dart';
 
 class BottomNavigation extends StatelessWidget {
@@ -37,10 +38,15 @@ class BottomNavigation extends StatelessWidget {
           icon,
           color: _tabColor(index: index),
         ),
-        label: tabName);
+        title: Text(
+          tabName,
+          style: TextStyle(color: _tabColor(index: index)),
+        ));
   }
 
   Color _tabColor({int index}) {
-    return AppState.currentTab == index ? Colors.cyan : Colors.grey;
+    return AppState.currentTab == index
+        ? AppColors.primary
+        : AppColors.textColorGrey;
   }
 }
