@@ -19,29 +19,28 @@ class BottomNavigation extends StatelessWidget {
       items: tabs
           .map(
             (TabItem tab) => _buildItem(
-              index: tab.getIndex(),
+              index: tab.index,
               icon: tab.icon,
               tabName: tab.tabName,
             ),
           )
           .toList(),
-      onTap: (int index) => onSelectTab(
-        index,
-      ),
+      onTap: (int index) => onSelectTab(index),
     );
   }
 
   BottomNavigationBarItem _buildItem(
       {int index, IconData icon, String tabName}) {
     return BottomNavigationBarItem(
-        icon: Icon(
-          icon,
-          color: _tabColor(index: index),
-        ),
-        title: Text(
-          tabName,
-          style: TextStyle(color: _tabColor(index: index)),
-        ));
+      icon: Icon(
+        icon,
+        color: _tabColor(index: index),
+      ),
+      title: Text(
+        tabName,
+        style: TextStyle(color: _tabColor(index: index)),
+      ),
+    );
   }
 
   Color _tabColor({int index}) {

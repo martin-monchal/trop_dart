@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
@@ -8,6 +10,10 @@ import 'package:trop_dart/ui/screens/routes.dart';
 import 'package:trop_dart/ui/screens/shared/components/login_confirm_button.dart';
 import 'package:trop_dart/ui/screens/shared/components/textfield.dart';
 import 'package:trop_dart/ui/screens/shared/model/profile_user.dart';
+
+double _getHeightContainer(BuildContext context) {
+  return math.max(300.0, MediaQuery.of(context).size.height * 0.45);
+}
 
 class RegisterBody extends StatefulWidget {
   @override
@@ -48,7 +54,7 @@ class _RegisterBodyState extends State<RegisterBody> {
 
     return Center(
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.45,
+        height: _getHeightContainer(context),
         width: MediaQuery.of(context).size.width * 0.80,
         decoration: loginContainerDecoration,
         child: Stack(

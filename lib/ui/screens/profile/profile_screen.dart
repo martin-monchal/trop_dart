@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:trop_dart/ui/resources/app_colors.dart';
 import 'package:trop_dart/ui/resources/app_images.dart';
 import 'package:trop_dart/ui/screens/profile/components/bottom_profile_button.dart';
 import 'package:trop_dart/ui/screens/profile/components/profile_body.dart';
+import 'package:trop_dart/ui/screens/profile/components/profile_bottom_sheet.dart';
 import 'package:trop_dart/ui/screens/shared/model/profile_user.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -16,7 +18,12 @@ class ProfileScreen extends StatelessWidget {
           child: ProfileBody(),
         ),
         BottomProfileButton(
-          onPressed: null,
+          onPressed: () {
+            showBarModalBottomSheet(
+              context: context,
+              builder: (BuildContext context) => ProfileBottomSheet(),
+            );
+          },
         ),
       ],
     );
@@ -45,8 +52,8 @@ class _ProfileHeader extends StatelessWidget {
           Align(
             alignment: Alignment.topCenter,
             child: Container(
-              margin:
-                  const EdgeInsetsDirectional.only(top: kToolbarHeight + 30.0),
+              margin: EdgeInsetsDirectional.only(
+                  top: MediaQuery.of(context).size.height * 0.08),
               child: Text(user.userName,
                   style: TextStyle(
                       fontSize: 30.0,

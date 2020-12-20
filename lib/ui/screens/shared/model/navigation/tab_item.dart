@@ -19,7 +19,7 @@ class TabItem {
     _index = i;
   }
 
-  int getIndex() => _index;
+  int get index => _index;
 
   Widget get page {
     return Visibility(

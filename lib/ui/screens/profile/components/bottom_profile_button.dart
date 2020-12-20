@@ -15,13 +15,9 @@ class BottomProfileButton extends StatelessWidget {
       height: 100.0,
       width: double.infinity,
       child: Center(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            minWidth: 0.0,
-            maxWidth: 300.0,
-            minHeight: 50.0,
-            maxHeight: 50.0,
-          ),
+        child: SizedBox(
+          width: 300.0,
+          height: 50.0,
           child: InkWell(
             borderRadius: borderRadius,
             onTap: onPressed,

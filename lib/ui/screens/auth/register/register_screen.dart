@@ -7,7 +7,10 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: BackButton(color: AppColors.white)),
+      appBar: AppBar(
+        leading: BackButton(color: AppColors.white),
+        elevation: 0,
+      ),
       backgroundColor: Theme.of(context).primaryColor,
       body: RegisterBody(),
     );

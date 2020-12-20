@@ -12,6 +12,7 @@ class AppColors {
   static const Color _darkGrey = Color(0xFF5B5C53);
   static const Color _yellow = Color(0xFFE2C916);
   static const Color _red = Color(0xFFD31717);
+  static const Color _black = Color(0xFF000000);
 
   /// END Theme colors
 
@@ -30,4 +31,6 @@ class AppColors {
   static Color get itemListBorder => _grey;
 
   static Color get textColorGrey => _darkGrey;
+
+  static Color get black => _black;
 }

@@ -25,7 +25,9 @@ class AppState extends State<App> {
     ),
   ];
 
-  AppState() {
+  @override
+  void initState() {
+    super.initState();
     tabs.asMap().forEach((int index, TabItem tab) {
       tab.setIndex(index);
     });
