@@ -1,25 +1,31 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import 'package:trop_dart/ui/resources/app_colors.dart';
-
-/* File _image;
-  final picker = ImagePicker();
-
-  Future getImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
-
-    setState(() {
-      if (pickedFile != null) {
-        _image = File(pickedFile.path);
-      } else {
-        print('No image selected.');
-      }
-    });
-  } */
+import 'package:trop_dart/ui/screens/shared/model/profile_user.dart';
 
 class ProfileBottomSheet extends StatelessWidget {
+  final ValueChanged<File> onChanged;
+
+  ProfileBottomSheet({@required this.onChanged});
+
+  Future<File> getImage(ImageSource imageSource) async {
+    ImagePicker picker = ImagePicker();
+    File image;
+    final pickedFile = await picker.getImage(source: imageSource);
+
+    if (pickedFile != null) {
+      image = File(pickedFile.path);
+    }
+    return image;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<ProfileUser>(context);
     return Container(
       padding: const EdgeInsets.all(20.0),
       height: 200.0,
@@ -36,7 +42,15 @@ class ProfileBottomSheet extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _ActionItem(icon: Icons.camera, onPressed: null),
+                _ActionItem(
+                  icon: Icons.camera,
+                  onPressed: () async {
+                    File _image = await getImage(ImageSource.camera);
+
+                    user.setProfilePicture(_image);
+                    onChanged(_image);
+                  },
+                ),
                 _ActionItem(icon: Icons.photo, onPressed: null),
               ],
             ),
