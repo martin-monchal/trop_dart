@@ -16,4 +16,9 @@ class ProfileUser {
   void setUserName(String _userName) => userName = _userName;
 
   void setProfilePicture(File _image) => profilePicture = _image;
+
+  void fromLogin(Map<String, String> userMap) {
+    name = userMap['name'];
+    userName = userMap['username'];
+  }
 }

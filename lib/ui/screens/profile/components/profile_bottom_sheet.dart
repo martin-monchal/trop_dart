@@ -51,7 +51,15 @@ class ProfileBottomSheet extends StatelessWidget {
                     onChanged(_image);
                   },
                 ),
-                _ActionItem(icon: Icons.photo, onPressed: null),
+                _ActionItem(
+                  icon: Icons.photo,
+                  onPressed: () async {
+                    File _image = await getImage(ImageSource.gallery);
+
+                    user.setProfilePicture(_image);
+                    onChanged(_image);
+                  },
+                ),
               ],
             ),
           ),

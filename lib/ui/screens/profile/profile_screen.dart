@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
+import 'package:trop_dart/app/app_services.dart';
 import 'package:trop_dart/ui/resources/app_colors.dart';
 import 'package:trop_dart/ui/screens/profile/bloc/profile_bloc.dart';
 import 'package:trop_dart/ui/screens/profile/components/bottom_profile_button.dart';
@@ -35,6 +36,10 @@ class ProfileScreen extends StatelessWidget {
 
                 BlocProvider.of<ProfileBloc>(context)
                     .changeProfilePicture(image);
+
+                if (image != null) {
+                  ApplicationServices.sharedPreferences.setPicture(image.path);
+                }
               }),
             ],
           );

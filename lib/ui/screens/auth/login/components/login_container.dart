@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
@@ -93,18 +94,22 @@ class _LoginContainerState extends State<LoginContainer> {
           ),
           LoginConfirmButton(
             onPressed: () async {
-              bool isLogged = ApplicationServices.sharedPreferences
+              Map<String, String> userMap = ApplicationServices
+                  .sharedPreferences
                   .login(_userNameController.text, _passwordController.text);
 
-              if (!isLogged) {
+              if (userMap == null) {
                 showSimpleNotification(
                   Text('Wrong password'),
                   background: AppColors.errorColor,
                   duration: Duration(milliseconds: 1500),
                 );
               } else {
-                user.setUserName(_userNameController.text);
-
+                user.fromLogin(userMap);
+                bool exists = await File(userMap['image']).exists();
+                if (exists) {
+                  user.setProfilePicture(File(userMap['image']));
+                }
                 Navigator.of(context).pushNamed(AppRoutes.routeApp);
               }
             },
