@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trop_dart/ui/resources/app_colors.dart';
 
-class BottomProfileButton extends StatelessWidget {
+class AddBeerBottomButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  BottomProfileButton({@required this.onPressed});
+  AddBeerBottomButton({@required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class BottomProfileButton extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Center(
                 child: Text(
-                  'Change Profile Picture',
+                  'Add Beer',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24.0,

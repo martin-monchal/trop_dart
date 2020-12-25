@@ -13,5 +13,9 @@ abstract class StorageBox {
 
   Future<HiveBeer> getItem(String key, [Object defaultValue]);
 
+  Future<List<Object>> getList(String key, [List<Object> defaultValue]);
+
+  Future<void> saveList(String key, List<Object> value);
+
   Future<void> clear();
 }

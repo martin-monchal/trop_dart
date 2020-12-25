@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:trop_dart/ui/resources/app_colors.dart';
 
 class HomePageScreen extends StatelessWidget {
   @override
@@ -8,8 +7,6 @@ class HomePageScreen extends StatelessWidget {
       child: Container(
         height: double.infinity,
         width: double.infinity,
-        color: AppColors.white,
-        child: null,
       ),
     );
   }

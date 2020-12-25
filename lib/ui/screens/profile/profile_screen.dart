@@ -26,21 +26,24 @@ class ProfileScreen extends StatelessWidget {
               Expanded(
                 child: ProfileBody(),
               ),
-              BottomProfileButton(onPressed: () async {
-                File image = await showBarModalBottomSheet(
-                  context: context,
-                  builder: (BuildContext context) => ProfileBottomSheet(
-                    onChanged: (File image) => Navigator.pop(context, image),
-                  ),
-                );
+              BottomProfileButton(
+                onPressed: () async {
+                  File image = await showBarModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) => ProfileBottomSheet(
+                      onChanged: (File image) => Navigator.pop(context, image),
+                    ),
+                  );
 
-                BlocProvider.of<ProfileBloc>(context)
-                    .changeProfilePicture(image);
+                  BlocProvider.of<ProfileBloc>(context)
+                      .changeProfilePicture(image);
 
-                if (image != null) {
-                  ApplicationServices.sharedPreferences.setPicture(image.path);
-                }
-              }),
+                  if (image != null) {
+                    ApplicationServices.sharedPreferences
+                        .setPicture(image.path);
+                  }
+                },
+              ),
             ],
           );
         },

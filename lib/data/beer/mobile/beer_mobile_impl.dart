@@ -8,10 +8,13 @@ import 'package:trop_dart/ui/screens/shared/model/beer.dart';
 
 class BeerMobileImpl extends BeerService {
   StorageBox _box;
+  bool isInitialized = false;
 
   @override
   Future<void> init() async {
+    isInitialized = false;
     await _initStorage();
+    isInitialized = true;
   }
 
   Future<void> _initStorage() async {
@@ -20,19 +23,27 @@ class BeerMobileImpl extends BeerService {
 
   @override
   Future<void> generateBeer(int id, Beer data) async {
+    if (!isInitialized) {
+      await init();
+    }
     await _saveBeer(id, data);
   }
 
   Future<void> _saveBeer(int id, Beer data) async {
-    HiveBeer beer = HiveBeer.fromBeer(data, id);
-    await _box.saveItem('beer', beer);
+    List<HiveBeer> beers = (await _box.getList('beer', <HiveBeer>[])).cast();
+
+    beers.add(HiveBeer.fromBeer(data, id));
+    await _box.saveList('beer', beers);
   }
 
   @override
-  Future<StoredBeer> getStoredBeer() async {
-    HiveBeer beer = await _box.getItem('beer', HiveBeer());
+  Future<Iterable<StoredBeer>> getStoredBeers() async {
+    List<HiveBeer> beers = (await _box.getList('beer', <HiveBeer>[])).cast();
 
-    return beer.toStoredBeer();
+    /*  history.sort((HiveNotification a, HiveNotification b) =>
+        b.publicationDate.compareTo(a.publicationDate)); */
+
+    return beers.map((HiveBeer beer) => beer.toStoredBeer());
   }
 
   @override

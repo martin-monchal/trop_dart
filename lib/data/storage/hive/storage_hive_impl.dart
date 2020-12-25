@@ -49,12 +49,21 @@ class _StorageHiveBox extends StorageBox {
   Future<HiveBeer> getItem(String key, [Object defaultValue]) =>
       getValue(key, defaultValue: defaultValue);
 
+  @override
+  Future<List<Object>> getList(String key, [List<dynamic> defaultValue]) =>
+      getValue(key, defaultValue: defaultValue);
+
   Future<T> getValue<T>(String key, {T defaultValue}) async {
     return box.get(key, defaultValue: defaultValue) ?? defaultValue;
   }
 
   @override
   Future<void> saveItem(String key, Object value) {
+    return box.put(key, value);
+  }
+
+  @override
+  Future<void> saveList(String key, List<dynamic> value) {
     return box.put(key, value);
   }
 

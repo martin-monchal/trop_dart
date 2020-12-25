@@ -17,6 +17,9 @@ dependencies:
   # Dart
   freezed_annotation: ^0.12.0
 
+  # Native
+  geolocator: ^6.1.13
+
   # Device specific
   device_info: ^0.4.2+9
 
