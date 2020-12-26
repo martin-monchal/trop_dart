@@ -113,6 +113,7 @@ class _RegisterBodyState extends State<RegisterBody> {
                       _userNameController.text, _passwordController.text);
 
                   user.setUserName(_userNameController.text);
+                  user.setName('');
 
                   Navigator.of(context).pushNamed(AppRoutes.routeApp);
                 }

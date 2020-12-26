@@ -35,10 +35,10 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   );
 
-                  BlocProvider.of<ProfileBloc>(context)
-                      .changeProfilePicture(image);
-
                   if (image != null) {
+                    BlocProvider.of<ProfileBloc>(context)
+                        .changeProfilePicture(image);
+
                     ApplicationServices.sharedPreferences
                         .setPicture(image.path);
                   }
