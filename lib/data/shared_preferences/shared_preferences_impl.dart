@@ -12,15 +12,32 @@ class SharedPreferencesImpl extends SharedPreferencesService {
   }
 
   @override
-  bool login(String userName, String password) {
+  Map<String, String> login(String userName, String password) {
     if (prefs.getString(userName) == password) {
-      return true;
+      final imagePath = prefs.getString('image') ?? '';
+      final name = prefs.getString('name') ?? '';
+      final map = {
+        'image': imagePath,
+        'name': name,
+        'username': userName,
+      };
+      return map;
     }
-    return false;
+    return null;
   }
 
   @override
   Future<void> register(String userName, String password) async {
     await prefs.setString(userName, password);
+  }
+
+  @override
+  Future<void> setPicture(String path) async {
+    await prefs.setString('image', path);
+  }
+
+  @override
+  Future<void> setName(String path) async {
+    await prefs.setString('name', path);
   }
 }

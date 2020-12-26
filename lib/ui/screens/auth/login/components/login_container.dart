@@ -1,11 +1,20 @@
+import 'dart:io';
+import 'dart:math' as math;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:provider/provider.dart';
 import 'package:trop_dart/app/app_services.dart';
 import 'package:trop_dart/ui/resources/app_colors.dart';
 import 'package:trop_dart/ui/screens/routes.dart';
 import 'package:trop_dart/ui/screens/shared/components/login_confirm_button.dart';
 import 'package:trop_dart/ui/screens/shared/components/textfield.dart';
+import 'package:trop_dart/ui/screens/shared/model/profile_user.dart';
+
+double _getHeightContainer(BuildContext context) {
+  return math.max(300.0, MediaQuery.of(context).size.height * 0.40);
+}
 
 class LoginContainer extends StatefulWidget {
   @override
@@ -25,8 +34,9 @@ class _LoginContainerState extends State<LoginContainer> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<ProfileUser>(context);
     return Container(
-      height: MediaQuery.of(context).size.height * 0.45,
+      height: _getHeightContainer(context),
       width: MediaQuery.of(context).size.width * 0.80,
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -69,7 +79,7 @@ class _LoginContainerState extends State<LoginContainer> {
                     hidePassword: true,
                   ),
                 ),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 30.0),
                 InkWell(
                   onTap: () =>
                       Navigator.of(context).pushNamed(AppRoutes.routeRegister),
@@ -84,21 +94,23 @@ class _LoginContainerState extends State<LoginContainer> {
           ),
           LoginConfirmButton(
             onPressed: () async {
-              bool isLogged = ApplicationServices.sharedPreferences
+              Map<String, String> userMap = ApplicationServices
+                  .sharedPreferences
                   .login(_userNameController.text, _passwordController.text);
 
-              if (!isLogged) {
+              if (userMap == null) {
                 showSimpleNotification(
                   Text('Wrong password'),
                   background: AppColors.errorColor,
                   duration: Duration(milliseconds: 1500),
                 );
               } else {
-                showSimpleNotification(
-                  Text('Well done'),
-                  background: Colors.green,
-                  duration: Duration(milliseconds: 1500),
-                );
+                user.fromLogin(userMap);
+                bool exists = await File(userMap['image']).exists();
+                if (exists) {
+                  user.setProfilePicture(File(userMap['image']));
+                }
+                Navigator.of(context).pushNamed(AppRoutes.routeApp);
               }
             },
           ),

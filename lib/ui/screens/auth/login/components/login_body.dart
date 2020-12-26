@@ -10,6 +10,14 @@ class LoginBody extends StatelessWidget {
         child: Stack(
           overflow: Overflow.visible,
           children: <Widget>[
+            Container(
+              margin: const EdgeInsetsDirectional.only(top: 60.0),
+              alignment: Alignment.center,
+              child: Text(
+                'Login',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
+              ),
+            ),
             Positioned(
                 top: MediaQuery.of(context).size.height * 0.5,
                 child: SizedBox(
@@ -21,21 +29,12 @@ class LoginBody extends StatelessWidget {
                     ),
                   ),
                 )),
-            Align(
-              alignment: Alignment.center,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  const SizedBox(height: 20.0),
-                  Text(
-                    'Login',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  const SizedBox(height: 80.0),
-                  LoginContainer(),
-                ],
-              ),
-            ),
+            SizedBox(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: Center(
+                  child: LoginContainer(),
+                )),
           ],
         ),
       ),

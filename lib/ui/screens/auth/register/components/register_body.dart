@@ -1,10 +1,19 @@
+import 'dart:math' as math;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:provider/provider.dart';
 import 'package:trop_dart/app/app_services.dart';
 import 'package:trop_dart/ui/resources/app_colors.dart';
+import 'package:trop_dart/ui/screens/routes.dart';
 import 'package:trop_dart/ui/screens/shared/components/login_confirm_button.dart';
 import 'package:trop_dart/ui/screens/shared/components/textfield.dart';
+import 'package:trop_dart/ui/screens/shared/model/profile_user.dart';
+
+double _getHeightContainer(BuildContext context) {
+  return math.max(300.0, MediaQuery.of(context).size.height * 0.45);
+}
 
 class RegisterBody extends StatefulWidget {
   @override
@@ -41,9 +50,11 @@ class _RegisterBodyState extends State<RegisterBody> {
       ],
     );
 
+    final user = Provider.of<ProfileUser>(context);
+
     return Center(
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.45,
+        height: _getHeightContainer(context),
         width: MediaQuery.of(context).size.width * 0.80,
         decoration: loginContainerDecoration,
         child: Stack(
@@ -97,10 +108,15 @@ class _RegisterBodyState extends State<RegisterBody> {
                     background: AppColors.errorColor,
                     duration: Duration(milliseconds: 1500),
                   );
-                }
+                } else {
+                  await ApplicationServices.sharedPreferences.register(
+                      _userNameController.text, _passwordController.text);
 
-                await ApplicationServices.sharedPreferences.register(
-                    _userNameController.text, _passwordController.text);
+                  user.setUserName(_userNameController.text);
+                  user.setName('');
+
+                  Navigator.of(context).pushNamed(AppRoutes.routeApp);
+                }
               },
             ),
           ],
