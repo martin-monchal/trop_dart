@@ -8,9 +8,9 @@ import 'package:trop_dart/ui/resources/app_colors.dart';
 import 'package:trop_dart/ui/screens/shared/model/profile_user.dart';
 
 class ProfileBottomSheet extends StatelessWidget {
-  final ValueChanged<File> onChanged;
-
   ProfileBottomSheet({@required this.onChanged});
+
+  final ValueChanged<File> onChanged;
 
   Future<File> getImage(ImageSource imageSource) async {
     ImagePicker picker = ImagePicker();
@@ -70,10 +70,9 @@ class ProfileBottomSheet extends StatelessWidget {
 }
 
 class _ActionItem extends StatelessWidget {
+  _ActionItem({@required this.icon, @required this.onPressed});
   final IconData icon;
   final VoidCallback onPressed;
-
-  _ActionItem({@required this.icon, @required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

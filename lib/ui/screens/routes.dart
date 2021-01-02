@@ -7,12 +7,12 @@ import 'package:trop_dart/ui/utils/routes.dart';
 import 'package:trop_dart/utils/platform_utils.dart';
 
 class AppRoutes {
+  const AppRoutes._();
+
   static const String routeHome = '/';
   static const String routeLogin = '/login';
   static const String routeRegister = '/register';
   static const String routeApp = '/app';
-
-  const AppRoutes._();
 
   static Route<dynamic> getRoutes(RouteSettings settings) {
     WidgetBuilder builder;
@@ -77,4 +77,5 @@ class _HorizontalRoute<T> extends MaterialPageRoute<T> {
   }
 }
 
-enum _PageAnimation { vertical, horizontal }
+// enum _PageAnimation { vertical, horizontal }
+enum _PageAnimation { horizontal }

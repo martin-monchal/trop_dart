@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:trop_dart/ui/resources/app_colors.dart';
 
 class BottomProfileButton extends StatelessWidget {
-  final VoidCallback onPressed;
-
   BottomProfileButton({@required this.onPressed});
+
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {

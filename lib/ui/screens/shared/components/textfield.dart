@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:trop_dart/ui/resources/app_colors.dart';
 
 class CustomTextfield extends StatelessWidget {
+  CustomTextfield(
+      {this.controller, this.hintText, this.inputType, this.hidePassword});
   final TextEditingController controller;
   final String hintText;
   final TextInputType inputType;
   final bool hidePassword;
-
-  CustomTextfield(
-      {this.controller, this.hintText, this.inputType, this.hidePassword});
 
   @override
   Widget build(BuildContext context) {

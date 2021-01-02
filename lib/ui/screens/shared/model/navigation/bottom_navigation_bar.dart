@@ -4,13 +4,12 @@ import 'package:trop_dart/ui/resources/app_colors.dart';
 import 'package:trop_dart/ui/screens/shared/model/navigation/tab_item.dart';
 
 class BottomNavigation extends StatelessWidget {
-  final ValueChanged<int> onSelectTab;
-  final List<TabItem> tabs;
-
   BottomNavigation({
     this.onSelectTab,
     this.tabs,
   });
+  final ValueChanged<int> onSelectTab;
+  final List<TabItem> tabs;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +39,7 @@ class BottomNavigation extends StatelessWidget {
         tabName,
         style: TextStyle(color: _tabColor(index: index)),
       ),
+      // label: tabName,
     );
   }
 

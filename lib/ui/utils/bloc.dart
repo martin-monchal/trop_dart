@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class BaseBloc<E, S> extends Bloc<E, S> {
-  E _lastEvent;
-
   BaseBloc(S initialState) : super(initialState);
+
+  E _lastEvent;
 
   void dispatch(E event) {
     add(event);

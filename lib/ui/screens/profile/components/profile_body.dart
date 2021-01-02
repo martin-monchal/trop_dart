@@ -119,16 +119,15 @@ class _ProfileBodyState extends State<ProfileBody> {
 }
 
 class _ProfileListItem extends StatelessWidget {
-  final IconData icon;
-  final String value;
-  final IconData editIcon;
-  final VoidCallback onPressed;
-
   _ProfileListItem(
       {@required this.icon,
       @required this.value,
       @required this.onPressed,
       this.editIcon});
+  final IconData icon;
+  final String value;
+  final IconData editIcon;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {

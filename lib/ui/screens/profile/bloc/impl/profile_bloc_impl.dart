@@ -6,9 +6,8 @@ import 'package:trop_dart/ui/utils/bloc.dart';
 part 'profile_event.dart';
 
 class ProfileBloc extends BaseBloc<_ProfileEvent, ProfileState> {
-  final File initialImage;
-
   ProfileBloc({this.initialImage}) : super(_initialState(initialImage));
+  final File initialImage;
 
   static ProfileState _initialState(File image) => ProfileState(image: image);
 

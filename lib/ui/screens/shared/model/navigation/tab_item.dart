@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:trop_dart/ui/app.dart';
 
 class TabItem {
+  TabItem({
+    @required this.tabName,
+    @required this.icon,
+    @required Widget page,
+  }) : _page = page;
   final String tabName;
   final IconData icon;
   final GlobalKey<NavigatorState> key = GlobalKey<NavigatorState>();
   final Widget _page;
 
   int _index = 0;
-
-  TabItem({
-    @required this.tabName,
-    @required this.icon,
-    @required Widget page,
-  }) : _page = page;
 
   void setIndex(int i) {
     _index = i;

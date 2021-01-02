@@ -1,3 +1,4 @@
+import 'package:geolocator/geolocator.dart';
 import 'package:trop_dart/ui/screens/shared/model/beer.dart';
 
 abstract class BeerService {
@@ -11,14 +12,12 @@ abstract class BeerService {
 }
 
 class StoredBeer {
+  StoredBeer({this.id, this.name, this.date, this.location});
+
   final int id;
   final String name;
   final DateTime date;
+  final Position location;
 
-  StoredBeer({this.id, this.name, this.date});
-
-  Beer toBeer() => Beer(
-        name: name,
-        date: date,
-      );
+  Beer toBeer() => Beer(name: name, date: date, location: location);
 }

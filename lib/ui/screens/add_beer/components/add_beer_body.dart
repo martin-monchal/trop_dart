@@ -60,7 +60,7 @@ class _AddBeerBodyState extends State<AddBeerBody> {
                 inputType: TextInputType.name,
               ),
               _BeerLocationItem(
-                value: 'undefined',
+                value: 'My position',
                 editIcon: Icons.map,
                 onPressed: () async {
                   Position position = await _determinePosition();
@@ -71,9 +71,11 @@ class _AddBeerBodyState extends State<AddBeerBody> {
           ),
         ),
         AddBeerBottomButton(
-          onPressed: () {
+          onPressed: () async {
+            Position position = await _determinePosition();
             if (controller.text.length > 0) {
-              BlocProvider.of<AppBloc>(context).addBeer(controller.text, null);
+              BlocProvider.of<AppBloc>(context)
+                  .addBeer(controller.text, position);
             } else {
               showSimpleNotification(
                 Text('Beer should have a name'),
@@ -95,12 +97,11 @@ class _AddBeerBodyState extends State<AddBeerBody> {
 }
 
 class _BeerLocationItem extends StatelessWidget {
+  _BeerLocationItem(
+      {@required this.value, @required this.onPressed, this.editIcon});
   final String value;
   final IconData editIcon;
   final VoidCallback onPressed;
-
-  _BeerLocationItem(
-      {@required this.value, @required this.onPressed, this.editIcon});
 
   @override
   Widget build(BuildContext context) {

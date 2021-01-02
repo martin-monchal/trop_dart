@@ -53,7 +53,8 @@ class _LoginContainerState extends State<LoginContainer> {
         ],
       ),
       child: Stack(
-        overflow: Overflow.visible,
+        // overflow: Overflow.visible,
+        clipBehavior: Clip.none,
         children: <Widget>[
           _PictureOverflow(),
           Align(

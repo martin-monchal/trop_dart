@@ -41,9 +41,8 @@ class StorageWithHive extends Storage {
 }
 
 class _StorageHiveBox extends StorageBox {
-  final Box<Object> box;
-
   _StorageHiveBox._(this.box);
+  final Box<Object> box;
 
   @override
   Future<HiveBeer> getItem(String key, [Object defaultValue]) =>

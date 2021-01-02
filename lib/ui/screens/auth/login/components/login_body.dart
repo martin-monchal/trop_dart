@@ -8,7 +8,8 @@ class LoginBody extends StatelessWidget {
     return SafeArea(
       child: SingleChildScrollView(
         child: Stack(
-          overflow: Overflow.visible,
+          // overflow: Overflow.visible,
+          clipBehavior: Clip.none,
           children: <Widget>[
             Container(
               margin: const EdgeInsetsDirectional.only(top: 60.0),

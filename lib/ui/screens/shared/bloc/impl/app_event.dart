@@ -5,10 +5,10 @@ abstract class _AppEvent {
 }
 
 class _AddBeerEvent extends _AppEvent {
+  const _AddBeerEvent(this.beerName, this.location);
+
   final String beerName;
   final Position location;
-
-  const _AddBeerEvent(this.beerName, this.location);
 }
 
 class _LoadBeersEvent extends _AppEvent {

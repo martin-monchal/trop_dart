@@ -5,6 +5,8 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="trop_dart"
         android:icon="@mipmap/launcher_icon">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyAuy-ZrDBklw3OxPP_N9D8cH9mx72rqTYA"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

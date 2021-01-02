@@ -58,7 +58,8 @@ class _RegisterBodyState extends State<RegisterBody> {
         width: MediaQuery.of(context).size.width * 0.80,
         decoration: loginContainerDecoration,
         child: Stack(
-          overflow: Overflow.visible,
+          // overflow: Overflow.visible,
+          clipBehavior: Clip.none,
           children: <Widget>[
             _PictureOverflow(),
             Align(

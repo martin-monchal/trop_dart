@@ -5,6 +5,7 @@ abstract class _ProfileEvent {
 }
 
 class _ChangeProfilePictureEvent extends _ProfileEvent {
-  final File image;
   const _ChangeProfilePictureEvent(this.image);
+
+  final File image;
 }

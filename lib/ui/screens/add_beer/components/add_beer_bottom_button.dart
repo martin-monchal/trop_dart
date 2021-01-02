@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:trop_dart/ui/resources/app_colors.dart';
 
 class AddBeerBottomButton extends StatelessWidget {
-  final VoidCallback onPressed;
-
   AddBeerBottomButton({@required this.onPressed});
+
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {

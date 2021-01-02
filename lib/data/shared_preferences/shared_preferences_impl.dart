@@ -2,9 +2,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trop_dart/data/shared_preferences/shared_preferences_interface.dart';
 
 class SharedPreferencesImpl extends SharedPreferencesService {
-  SharedPreferences prefs;
-
   SharedPreferencesImpl();
+  SharedPreferences prefs;
 
   @override
   Future<void> init() async {

@@ -29,7 +29,7 @@ class AppBloc extends BaseBloc<_AppEvent, AppState> {
     if (event is _AddBeerEvent) {
       int localBeerId = Random().nextInt(0x80000000);
 
-      Beer beer = Beer(name: event.beerName);
+      Beer beer = Beer(name: event.beerName, location: event.location);
 
       await ApplicationServices.beer.generateBeer(localBeerId, beer);
       Iterable<StoredBeer> storedBeers =
