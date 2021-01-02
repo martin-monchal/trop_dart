@@ -13,6 +13,7 @@ class AddBeerBody extends StatefulWidget {
 
 class _AddBeerBodyState extends State<AddBeerBody> {
   TextEditingController controller;
+  Position position;
 
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
@@ -63,8 +64,7 @@ class _AddBeerBodyState extends State<AddBeerBody> {
                 value: 'My position',
                 editIcon: Icons.map,
                 onPressed: () async {
-                  Position position = await _determinePosition();
-                  debugPrint(position.toString());
+                  position = await _determinePosition();
                 },
               ),
             ],
@@ -72,7 +72,6 @@ class _AddBeerBodyState extends State<AddBeerBody> {
         ),
         AddBeerBottomButton(
           onPressed: () async {
-            Position position = await _determinePosition();
             if (controller.text.length > 0) {
               BlocProvider.of<AppBloc>(context)
                   .addBeer(controller.text, position);
