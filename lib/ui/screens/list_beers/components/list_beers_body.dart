@@ -91,12 +91,23 @@ class _ListItemBeerCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String date = DateFormat.yMMMd().format(beer.date);
-    return Padding(
+    return Container(
+      decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(color: AppColors.itemListBorder))),
       padding: const EdgeInsets.all(15.0),
       child: Row(
         children: <Widget>[
-          Expanded(child: Text(beer.name)),
-          Text(date),
+          Expanded(
+            child: Text(
+              beer.name,
+              style: TextStyle(
+                color: AppColors.primary,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Text(date, style: TextStyle(fontSize: 20.0)),
         ],
       ),
     );

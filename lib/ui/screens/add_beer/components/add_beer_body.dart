@@ -6,6 +6,14 @@ import 'package:trop_dart/ui/screens/add_beer/components/add_beer_bottom_button.
 import 'package:trop_dart/ui/screens/shared/bloc/app_bloc.dart';
 import 'package:trop_dart/ui/screens/shared/components/textfield.dart';
 
+String concatLatitudeLongitude(double latitude, double longitude) {
+  if (latitude != null && longitude != null) {
+    return '$latitude - $longitude';
+  } else {
+    return 'My position';
+  }
+}
+
 class AddBeerBody extends StatefulWidget {
   @override
   _AddBeerBodyState createState() => _AddBeerBodyState();
@@ -61,10 +69,12 @@ class _AddBeerBodyState extends State<AddBeerBody> {
                 inputType: TextInputType.name,
               ),
               _BeerLocationItem(
-                value: 'My position',
+                value: concatLatitudeLongitude(
+                    position?.latitude, position?.longitude),
                 editIcon: Icons.map,
                 onPressed: () async {
                   position = await _determinePosition();
+                  setState(() {});
                 },
               ),
             ],
