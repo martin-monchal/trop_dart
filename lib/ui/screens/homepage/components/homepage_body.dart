@@ -21,12 +21,11 @@ class HomePageBody extends StatelessWidget {
 
         if (items != null) {
           for (Beer beer in items) {
-            if (beer.location != null) {
+            if (beer.latitude != null && beer.longitude != null) {
               final marker = Marker(
                 markerId: MarkerId(
                     'beer: ${beer.name} - ${beer.date.toIso8601String()}'),
-                position:
-                    LatLng(beer.location.latitude, beer.location.longitude),
+                position: LatLng(beer.latitude, beer.longitude),
                 infoWindow: InfoWindow(
                   title: beer.name,
                   snippet: DateFormat.yMMMd().format(beer.date).toString(),

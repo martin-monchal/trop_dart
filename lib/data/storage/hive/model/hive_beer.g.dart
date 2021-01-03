@@ -18,21 +18,27 @@ class HiveBeerAdapter extends TypeAdapter<HiveBeer> {
     };
     return HiveBeer(
       id: fields[0] as int,
-      publicationDate: fields[2] as DateTime,
       name: fields[1] as String,
+      publicationDate: fields[2] as DateTime,
+      latitude: fields[3] as double,
+      longitude: fields[4] as double,
     );
   }
 
   @override
   void write(BinaryWriter writer, HiveBeer obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.publicationDate);
+      ..write(obj.publicationDate)
+      ..writeByte(3)
+      ..write(obj.latitude)
+      ..writeByte(4)
+      ..write(obj.longitude);
   }
 
   @override
