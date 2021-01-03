@@ -47,7 +47,6 @@ class _ListBeersBody extends State<ListBeersBody> {
                 itemCount: items?.length ?? 0,
                 itemBuilder: (BuildContext context, int index) {
                   Beer item = items.elementAt(index);
-                  debugPrint('item' + item.location.toString());
 
                   return Padding(
                     padding: EdgeInsets.only(

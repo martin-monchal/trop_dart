@@ -21,7 +21,6 @@ class HomePageBody extends StatelessWidget {
 
         if (items != null) {
           for (Beer beer in items) {
-            debugPrint('test:' + beer.toString());
             if (beer.location != null) {
               final marker = Marker(
                 markerId: MarkerId(
