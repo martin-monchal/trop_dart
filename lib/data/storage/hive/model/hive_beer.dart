@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:trop_dart/data/beer/beer_interface.dart';
 import 'package:trop_dart/ui/screens/shared/model/beer.dart';
-import 'package:geolocator/geolocator.dart';
 
 part 'hive_beer.g.dart';
 
