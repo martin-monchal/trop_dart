@@ -40,9 +40,6 @@ class BeerMobileImpl extends BeerService {
   Future<Iterable<StoredBeer>> getStoredBeers() async {
     List<HiveBeer> beers = (await _box.getList('beer', <HiveBeer>[])).cast();
 
-    /*  history.sort((HiveNotification a, HiveNotification b) =>
-        b.publicationDate.compareTo(a.publicationDate)); */
-
     return beers.map((HiveBeer beer) => beer.toStoredBeer());
   }
 

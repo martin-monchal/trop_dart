@@ -7,10 +7,18 @@ part 'hive_beer.g.dart';
 
 @HiveType(typeId: 0)
 class HiveBeer extends HiveObject {
-  HiveBeer({this.id, this.name, this.publicationDate, this.location});
+  HiveBeer({
+    this.id,
+    this.name,
+    this.publicationDate,
+    this.latitude,
+    this.longitude,
+  });
+
   HiveBeer.fromBeer(Beer beer, this.id)
       : publicationDate = DateTime.now(),
-        location = beer.location,
+        latitude = beer.latitude,
+        longitude = beer.longitude,
         name = beer.name;
 
   @HiveField(0)
@@ -23,8 +31,16 @@ class HiveBeer extends HiveObject {
   DateTime publicationDate;
 
   @HiveField(3)
-  Position location;
+  double latitude;
 
-  StoredBeer toStoredBeer() =>
-      StoredBeer(id: id, name: name, date: publicationDate, location: location);
+  @HiveField(4)
+  double longitude;
+
+  StoredBeer toStoredBeer() => StoredBeer(
+        id: id,
+        name: name,
+        date: publicationDate,
+        latitude: latitude,
+        longitude: longitude,
+      );
 }
